@@ -1,0 +1,18 @@
+{% extends "admin/base_site.html" %}
+
+{% block content %}
+    <div class="container">
+        <form action="" method="post">
+            {% csrf_token %}
+            {% for field in form %}
+                <div class="form-group">
+                    {{ field.label }}
+                    {{ field }}
+                </div>
+            {% endfor %}
+            <ul>{{ subscribers|unordered_list }}</ul>
+            <input type="hidden" name="action" value="_add_mailing" />
+            <input type="submit" name="apply" value="Задать" />
+        </form>
+    </div>
+{% endblock %}
